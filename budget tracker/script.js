@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let idealPlan = {};
     let actualExpenses = {};
+    let totalBudget = 0;
 
     // Mock categories (replace with actual categories if known)
     const categories = ['Food', 'Transportation', 'Utilities', 'Entertainment'];
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     budgetForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        const totalBudget = parseFloat(totalBudgetInput.value);
+        totalBudget = parseFloat(totalBudgetInput.value);
 
         // Generate ideal plan
         idealPlan = {};
@@ -96,8 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showPopupMessage() {
-        messageText.textContent = 'Expense added!';
-        messageEmoji.textContent = '🎉';
+        const totalExpenses = Object.values(actualExpenses).reduce((acc, expense) => acc + expense, 0);
+        if (totalExpenses <= totalBudget) {
+            messageText.textContent = 'Great! You are still under your budget, good work! 🎉';
+            messageEmoji.textContent = '😊';
+        } else {
+            messageText.textContent = 'Oh no! You have exceeded your budget, try to save more! 💸';
+            messageEmoji.textContent = '😟';
+        }
         messagePopup.classList.add('show');
         setTimeout(() => {
             messagePopup.classList.remove('show');
