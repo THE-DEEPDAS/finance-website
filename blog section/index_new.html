@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Financial Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance website/index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="slider">
+                    <div class="blog-post" style="background-image: url('images/Designer.jpeg');" onclick="window.location.href='blog1.html'">
+                        <div class="overlay">
+                            <h2>Study the Trends of Stock Market Charts</h2>
+                            <p>Learn how to see the charts and make correct judgments based on the nature of charts.</p>
+                            <div class="small-texts"><small>By: Deep Das</small></div>
+                        </div>
+                    </div>
+                    <div class="blog-post" style="background-image: url('images/Designer%20(2).jpeg');" onclick="window.location.href='blog2.html'">
+                        <div class="overlay">
+                            <h2>Financial Terminologies You Must Know!</h2>
+                            <p>The top 20 most frequently used terms in finance which you must know.</p>
+                            <div class="small-texts"><small>By: Deep Das</small></div>
+                        </div>
+                    </div>
+                    <div class="blog-post" style="background-image: url('images/Designer%20(3).jpeg');" onclick="window.location.href='blog3.html'">
+                        <div class="overlay">
+                            <h2>Investing in Stocks: A Beginner's Guide</h2>
+                            <p>Learn to know the rules and regulations, what to take care of, and many more basic things about Indian stock markets.</p>
+                            <div class="small-texts"><small>By: Deep Das</small></div>
+                        </div>
+                    </div>
+                    <div class="blog-post" style="background-image: url('images/Designer%20(4).jpeg');" onclick="window.location.href='blog4.html'">
+                        <div class="overlay">
+                            <h2>The Basics of Investing in Stocks</h2>
+                            <p>Learn about stocks and the share market, understand key stock market terms, and start investing wisely. Make informed decisions with this stock market guide.</p>
+                            <div class="small-texts"><small>By: Deep Das</small></div>
+                        </div>
+                    </div>
+                    <div class="blog-post" style="background-image: url('images/Designer%20(5).jpeg');" onclick="window.location.href='blog5.html'">
+                        <div class="overlay">
+                            <h2>5 Rules to Improve Your Financial Health</h2>
+                            <p>The most important principles which can make you financially healthy.</p>
+                            <div class="small-texts"><small>By: Deep Das</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dots text-center">
+                    <span class="dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="https://www.investopedia.com">Investopedia</a></li>
+                        <li><a href="https://www.marketwatch.com">MarketWatch</a></li>
+                        <li><a href="https://www.bloomberg.com">Bloomberg</a></li>
+                        <li><a href="https://www.reuters.com">Reuters</a></li>
+                    </ul>
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        <li><a href="blog1.html">Study the Trends of Stock Market Charts</a></li>
+                        <li><a href="blog2.html">Financial Terminologies You Must Know!</a></li>
+                        <li><a href="blog3.html">Investing in Stocks: A Beginner's Guide</a></li>
+                        <li><a href="blog4.html">The Basics of Investing in Stocks</a></li>
+                        <li><a href="blog5.html">5 Rules to Improve Your Financial Health</a></li>
+                    </ul>
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Features Section -->
+                <h3>Suggest a Topic</h3>
+                <form id="topicSuggestionForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="topic" placeholder="Enter your suggested topic">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-4 text-center">
+            <p>&copy; 2024 Financial Blog. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
