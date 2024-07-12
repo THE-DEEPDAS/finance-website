@@ -1,3 +1,10 @@
+var loader = document.querySelector("#loader")
+// set timeout basically dalay in execution
+setTimeout(function(){
+    loader.style.top = "-100%";
+},3500)
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.getElementById('scrollContainer');
 
@@ -34,10 +41,10 @@ function typeText() {
     if (index < text.length) {
         document.getElementById('typing-text').textContent += text.charAt(index);
         index++;
-        setTimeout(typeText, 100); // Adjust the speed of typing here
+        setTimeout(typeText, 120); // Adjust the speed of typing here
     } else {
         document.getElementById('typing-text').textContent = text; // Ensure the full text is shown
-        setTimeout(showShadowText, 100); // Show shadow text after typing completes
+        setTimeout(showShadowText, 200); // Show shadow text after typing completes
     }
 }
 
@@ -45,10 +52,12 @@ function showShadowText() {
     document.getElementById('shadow-text').style.opacity = 0.6;
 }
 
-window.onload = function() {
+// window.onload = function() {
+//     typeText();
+// };
+setTimeout(()=>{
     typeText();
-};
-
+},3600)
 
 
 // new idea for home page keep animation of typing just till its end and then
