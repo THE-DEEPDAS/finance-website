@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Budget Tracker</h1>
+    </header>
+    <main>
+        <section class="budget-input">
+            <h2>Set Your Budget</h2>
+            <form id="budget-form">
+                <label for="total-budget">Total Budget:</label>
+                <input type="number" id="total-budget" required>
+                <button type="submit">Set Budget</button>
+            </form>
+        </section>
+
+        <section id="ideal-plan-section" class="ideal-plan" style="display: none;">
+            <h2>Ideal Plan</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="ideal-plan"></tbody>
+            </table>
+        </section>
+
+        <section id="add-expense-section" class="add-expense" style="display: none;">
+            <h2>Add Expense</h2>
+            <form id="expense-form">
+                <label for="expense-category">Category:</label>
+                <select id="expense-category"></select>
+
+                <label for="expense-amount">Amount:</label>
+                <input type="number" id="expense-amount" required>
+                <button type="submit">Add Expense</button>
+            </form>
+        </section>
+
+        <section id="budget-comparison-section" class="budget-comparison" style="display: none;">
+            <h2>Budget Comparison</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Ideal Amount</th>
+                        <th>Actual Amount</th>
+                        <th>Difference</th>
+                    </tr>
+                </thead>
+                <tbody id="comparison-list"></tbody>
+            </table>
+        </section>
+
+        <div id="message-popup">
+            <div class="message"></div>
+            <div class="emoji"></div>
+        </div>
+    </main>
+    <div id="root"> <!--react will be rendered here--> </div>
+    <script src="script.js"></script>
+    <script src="react.production.min.js"></script>
+    <script src="react-dom.production.min.js"></script>
+    <script src="App.tsx"></script> 
+</body>
+</html>

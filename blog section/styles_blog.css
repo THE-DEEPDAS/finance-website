@@ -1,0 +1,59 @@
+/* styles_blog.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif; /* Example font-family */
+    line-height: 1.6;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333; /* Dark gray text */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+  }
+  
+  .full-blog-container {
+    max-width: 800px; /* Limit content width */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  h1 {
+    text-align: center; /* Center align heading */
+  }
+  
+  img {
+    display: block; /* Ensure image is block-level for margin auto */
+    margin: 0 auto 20px; /* Center image horizontally with bottom margin */
+    max-width: 100%; /* Responsive image width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  h3 {
+    color: #007bff; /* Bootstrap primary color for headings */
+  }
+  
+  p {
+    font-size: 1.1rem; /* Larger text size */
+    line-height: 1.8; /* Increased line height for readability */
+  }
+  
+  ul {
+    margin-top: 10px; /* Top margin for unordered lists */
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
