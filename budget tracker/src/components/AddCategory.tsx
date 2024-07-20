@@ -25,7 +25,7 @@ const AddCategory: React.FC<AddCategoryProps> = ({ onCategoryAdd }) => {
         onChange={(e) => setNewCategory(e.target.value)}
         placeholder="Enter new category"
       />
-      <button onClick={handleAddCategory}>Add Category</button>
+      <button onClick={handleAddCategory}><b>Add Category</b></button>
     </section>
   );
 };

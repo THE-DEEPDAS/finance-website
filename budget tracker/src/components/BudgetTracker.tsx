@@ -76,6 +76,7 @@ const BudgetTracker: React.FC = () => {
   return (
     <div>
       <header>
+        <h5>"Track your expenses effortlessly with Capify's Budget Tracker."</h5>
         <h1>Budget Tracker</h1>
       </header>
       <main>
@@ -160,7 +161,7 @@ const BudgetTracker: React.FC = () => {
                   {categories.map((category) => {
                     const idealAmount = idealPlan[category] || 0;
                     const actualAmount = actualExpenses[category] || 0;
-                    const difference = actualAmount - idealAmount;
+                    const difference = actualAmount - idealAmount ;
                     return (
                       <tr key={category}>
                         <td>{category}</td>

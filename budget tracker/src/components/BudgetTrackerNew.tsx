@@ -77,7 +77,8 @@ const BudgetTracker: React.FC = () => {
   return (
     <div>
       <header>
-        <h1>Budget Tracker</h1>
+      <h5>Track your expenses seamlessly with our Budget Tracker..</h5>
+        <h1>Budget Bliss</h1>
       </header>
       <main>
         <section className="budget-input">
@@ -91,10 +92,10 @@ const BudgetTracker: React.FC = () => {
               onChange={(e) => setTotalBudget(parseFloat(e.target.value))}
               required
             />
-            <button type="submit">Set Budget</button>
+            <button type="submit"><b>Set Budget</b></button>
           </form>
         </section>
-
+        <AddCategory onCategoryAdd={handleAddCategory} />
         {Object.keys(idealPlan).length > 0 && (
           <>
             <section className="ideal-plan">
@@ -122,7 +123,7 @@ const BudgetTracker: React.FC = () => {
               <h2>Add Expense</h2>
               <form onSubmit={handleExpenseSubmit}>
                 <label htmlFor="expense-category">Category:</label>
-                <select
+                <select style={{backgroundColor:"#3b3939",color:"white"}}
                   id="expense-category"
                   value={expenseCategory}
                   onChange={handleCategoryChange}
@@ -131,15 +132,15 @@ const BudgetTracker: React.FC = () => {
                     <option key={category} value={category}>{category}</option>
                   ))}
                 </select>
-                <label htmlFor="expense-amount">Amount:</label>
+                <label htmlFor="expense-amount" >Amount:</label>
                 <input
                   type="number"
                   id="expense-amount"
                   value={expenseAmount}
                   onChange={handleAmountChange}
-                  required
+                  required style={{backgroundColor:"#3b3939",color:"white"}}
                 />
-                <button type="submit">Add Expense</button>
+                <button type="submit"><b>Add Expense</b></button>
               </form>
               {expenseMessage && (
                 <div id="budget-alert" className="alert show">
@@ -149,7 +150,7 @@ const BudgetTracker: React.FC = () => {
               )}
             </section>
 
-            <AddCategory onCategoryAdd={handleAddCategory} />
+            {/* <AddCategory onCategoryAdd={handleAddCategory} /> */}
 
             <section className="budget-comparison">
               <h2>Budget Comparison</h2>

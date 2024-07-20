@@ -2,17 +2,134 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    /* background: linear-gradient(300deg, #04aef8 0%, #060606 100%); */
+    /* background: rgb(4,118,145);
+    background: -moz-radial-gradient(circle, rgba(4,118,145,1) 0%, rgba(0,0,0,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(4,118,145,1) 0%, rgba(0,0,0,1) 100%);
+    background: radial-gradient(circle, rgba(4,118,145,1) 0%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#047691",endColorstr="#000000",GradientType=1); */
+    /* background: rgb(1,204,232);
+    background: -moz-linear-gradient(43deg, rgba(1,204,232,1) 0%, rgba(0,0,0,1) 20%, rgba(0,103,117,1) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(43deg, rgba(1,204,232,1) 0%, rgba(0,0,0,1) 20%, rgba(0,103,117,1) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(43deg, rgba(1,204,232,1) 0%, rgba(0,0,0,1) 20%, rgba(0,103,117,1) 20%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#01cce8",endColorstr="#000000",GradientType=1); */
+    background: rgb(18,226,255);
+    background: -moz-linear-gradient(43deg, #FDDC5C 0%, rgba(0,0,0,1) 15%, #FFD700 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(43deg, #FDDC5C 0%, rgba(0,0,0,1) 15%, #FFD700 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(43deg, #FDDC5C 0%, rgba(0,0,0,1) 15%, #FFD700 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#12e2ff",endColorstr="#000000",GradientType=1);
     color: #333;
+    background-attachment: fixed;
+    z-index: 1;
+}
+header h5{
+    background: linear-gradient(to right, #ffffff, #f5ffff,#53def9, #00eaff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+header h1{
+    /* background: rgb(0,0,0);
+    background: -moz-linear-gradient(108deg, rgba(0,0,0,1) 38%, rgba(3,74,89,1) 100%, rgba(4,144,163,1) 100%);
+    background: -webkit-linear-gradient(108deg, rgba(0,0,0,1) 38%, rgba(3,74,89,1) 100%, rgba(4,144,163,1) 100%);
+    background: linear-gradient(108deg, rgba(0,0,0,1) 38%, rgba(3,74,89,1) 100%, rgba(4,144,163,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#0490a3",GradientType=1); */
+    background-color: black;
+    background: linear-gradient(to right, #ffffff, #f5ffff,#53def9, #00eaff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    padding: 0.3em ;
+    margin: 0;
+    /* box-shadow: 0.1px 20px 10px rgb(13, 13, 13,0.6); */
+    /* box-shadow: 20px 10px 80px rgba(4, 234, 255, 0.5); */
+    /* text-shadow: 1px 1px px rgba(255, 255, 255, 0.8); */
+    font-size: 5.5em;
+    border-radius: 15px;
+    /* -webkit-border-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5kdA4vh91_DtrovdYJK_jWzlj3mHHWABKeaIKCd761kcotdNygBXm5P17E_4VsK7kkNI&usqp=CAU")
+     25% 25% 25% 25% /25px round round; */
+}
+header h1:hover{
+    /* text-shadow: 200px 10px 1000px rgb(5, 5, 5); */
 }
 
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        padding: 15px 20px;
+        color: #fff;
+        top: 0;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 999;
+    }
+    
+    .logo {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    .nav-links {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-links li {
+        margin: 0 10px;
+    }
+    
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    
+    .nav-actions {
+        display: flex;
+        align-items: center;
+    }
+    
+    .sign-in, .subscribe {
+        background: none;
+        border: 1px solid #fff;
+        color: #fff;
+        padding: 5px 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    .sign-in:hover, .subscribe:hover {
+        background-color: #444;
+    }
+    
+    .search-container {
+        display: flex;
+        align-items: center;
+    }
+    
+    .search-container input {
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+    }
+    
+    .search-container .search-btn {
+        background-color: #ddd;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+    }
+    
+    .search-container .search-btn:hover {
+        background-color: #ccc;
+    }
+    
 
 main {
     padding: 2em;
@@ -21,19 +138,21 @@ main {
     animation: fadeIn 1s ease-in-out;
 }
 
-h1, h2 {
+/* header h1 {
     margin: 0 0 1em;
-    color: #444;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+} */
 
 .budget-input, .add-expense, .budget-comparison, .ideal-plan {
     margin-bottom: 2em;
-    background-color: white;
+    background-color: rgb(20, 20, 20);
+    color: #ffffff;
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: slideIn 0.5s ease-in-out;
+    
 }
 
 form {
@@ -52,19 +171,25 @@ input, select {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
+.add-category{
+    color: rgb(250, 252, 246);
+}
 button {
     padding: 0.5em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg,  #442c03 0%, #58440f 100%);
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
+
 }
 
 button:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: linear-gradient(135deg, #F9F295 0%, #E0AA3E 33%,#FAF398 66%,#B88A44 100%);
+    color: black;
+
 }
 
 table {
@@ -80,11 +205,12 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #000000;
+    margin-bottom: 10px;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #3b3939;
 }
 
 @keyframes fadeIn {
@@ -185,4 +311,8 @@ tbody tr:nth-child(even) {
       transform: translate(-50%, 0);
     }
   }
+  .add-expense{
+
+  }
+
   
