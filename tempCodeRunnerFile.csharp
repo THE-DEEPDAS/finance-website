@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	int n = 0;
+	cin >> n;
+
+	vector<int> participating;
+	vector<string> supporting;
+	for(int i = 0 ;i < n; i++){
+		int t = 0;
+		cin >> t;
+		participating.push_back(t);
+		string s;
+		cin >> s;
+		supporting.push_back(s);
+	}
+
+	for(int i = 0 ; i < n ; i++){
+		
+			string current = supporting[i];
+			
+			while(participating[i] > 1){
+				int index = 0;
+				bool deleted = false;
+
+				while(index < participating[i]-1){
+					char current_char = current[index];
+					int k = index + 1;//as index ni vadharay
+
+					while(k < participating[i] && current[k]==current_char){
+					k++;	
+				}
+
+				if(k < participating[i]){
+					for(int a = k; a < participating[i] - 1; a++){
+						current[a] = current[a + 1];
+                    }
+					current.pop_back();
+					deleted = true;
+                    participating[i] -= 1;
+					break;
+				}
+				else{
+					index ++;
+				}
+				
+				}
+			
+				if(!deleted) break;
+			}
+			if(current[0] == 'P') cout << "Particle" << endl;
+			else if(current[0] == 'W') cout << "Wave" << endl;
+			else cout << "Dual" << endl;
+		
+	}
+}

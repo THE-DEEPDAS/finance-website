@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import '../styles.css';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Line, Pie } from 'react-chartjs-2';
+import '../styles.css'; // Ensure this is included for styles
 import AddCategory from './AddCategory';
+
+// Register the components
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, Tooltip, Legend);
 
 const BudgetTracker: React.FC = () => {
   const [categories, setCategories] = useState<string[]>(['Food', 'Transportation', 'Utilities', 'Entertainment']);
@@ -10,10 +15,31 @@ const BudgetTracker: React.FC = () => {
   const [expenseCategory, setExpenseCategory] = useState<string>(categories[0]);
   const [expenseAmount, setExpenseAmount] = useState<number>(0);
   const [expenseMessage, setExpenseMessage] = useState<string>('');
+  const [balanceHistory, setBalanceHistory] = useState<number[]>([totalBudget]);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
+  const [additionalBudget, setAdditionalBudget] = useState<number>(0);
+
+  useEffect(() => {
+    if (expenseMessage) {
+      setShowAlert(true);
+      const timer = setTimeout(() => {
+        setShowAlert(false);
+        setExpenseMessage('');
+      }, 5000); // Close popup after 5 seconds
+      return () => clearTimeout(timer); // Cleanup timer if component unmounts or message changes
+    }
+  }, [expenseMessage]);
+
+  useEffect(() => {
+    const newIdealPlan = categories.reduce((acc, category) => {
+      acc[category] = totalBudget / categories.length;
+      return acc;
+    }, {} as { [key: string]: number });
+    setIdealPlan(newIdealPlan);
+  }, [totalBudget, categories]);
 
   const handleAddCategory = (newCategory: string) => {
     setCategories([...categories, newCategory]);
-    // Automatically set the new category as the current expense category
     setExpenseCategory(newCategory);
   };
 
@@ -38,7 +64,12 @@ const BudgetTracker: React.FC = () => {
     });
     setExpenseAmount(0);
 
-    // Display budget status message
+    // Update balance history
+    setBalanceHistory((prevHistory) => {
+      const totalExpenses = Object.values(actualExpenses).reduce((acc, expense) => acc + expense, 0) + expenseAmount;
+      return [...prevHistory, totalBudget - totalExpenses];
+    });
+
     displayBudgetStatusMessage();
   };
 
@@ -59,25 +90,45 @@ const BudgetTracker: React.FC = () => {
   };
 
   const handleCloseAlert = () => {
+    setShowAlert(false);
     setExpenseMessage('');
   };
 
-  useEffect(() => {
-    console.log('Categories updated:', categories);
-  }, [categories]);
+  const handleIncreaseBudget = () => {
+    setTotalBudget(prevBudget => prevBudget + additionalBudget);
+    setAdditionalBudget(0); // Reset additional budget input field
+  };
 
-  useEffect(() => {
-    console.log('Ideal plan updated:', idealPlan);
-  }, [idealPlan]);
+  const pieChartData = {
+    labels: Object.keys(actualExpenses),
+    datasets: [
+      {
+        data: Object.values(actualExpenses),
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+      }
+    ]
+  };
 
-  useEffect(() => {
-    console.log('Actual expenses updated:', actualExpenses);
-  }, [actualExpenses]);
+  const lineChartData = {
+    labels: balanceHistory.map((_, index) => `Expense ${index + 1}`),
+    datasets: [
+      {
+        label: 'Balance Over Time',
+        data: balanceHistory,
+        fill: false,
+        borderColor: '#FF6347', // Brighter color
+        pointBackgroundColor: '#FF6347',
+        pointBorderColor: '#FF6347',
+        pointRadius: 5,
+      }
+    ]
+  };
 
   return (
     <div>
       <header>
-      <h5>Track your expenses seamlessly with our Budget Tracker..</h5>
+        <h5>Track your expenses seamlessly with our Budget Tracker..</h5>
         <h1>Budget Bliss</h1>
       </header>
       <main>
@@ -93,6 +144,26 @@ const BudgetTracker: React.FC = () => {
               required
             />
             <button type="submit"><b>Set Budget</b></button>
+          </form>
+        </section>
+        <section className="increase-budget">
+          <h2>Increase Your Budget</h2>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleIncreaseBudget();
+            }}
+          >
+            <label htmlFor="additional-budget">Additional Amount:</label>
+            <input
+              type="number"
+              id="additional-budget"
+              value={additionalBudget}
+              onChange={(e) => setAdditionalBudget(parseFloat(e.target.value))}
+              required
+              style={{ backgroundColor: "#3b3939", color: "white" }}
+            />
+            <button type="submit"><b>Increase Budget</b></button>
           </form>
         </section>
         <AddCategory onCategoryAdd={handleAddCategory} />
@@ -112,7 +183,6 @@ const BudgetTracker: React.FC = () => {
                     <tr key={category}>
                       <td>{category}</td>
                       <td>{idealPlan[category]?.toFixed(2) || '0.00'}</td>
-                      {/* Use optional chaining to safely access toFixed() */}
                     </tr>
                   ))}
                 </tbody>
@@ -123,7 +193,8 @@ const BudgetTracker: React.FC = () => {
               <h2>Add Expense</h2>
               <form onSubmit={handleExpenseSubmit}>
                 <label htmlFor="expense-category">Category:</label>
-                <select style={{backgroundColor:"#3b3939",color:"white"}}
+                <select
+                  style={{backgroundColor:"#3b3939",color:"white"}}
                   id="expense-category"
                   value={expenseCategory}
                   onChange={handleCategoryChange}
@@ -132,17 +203,18 @@ const BudgetTracker: React.FC = () => {
                     <option key={category} value={category}>{category}</option>
                   ))}
                 </select>
-                <label htmlFor="expense-amount" >Amount:</label>
+                <label htmlFor="expense-amount">Amount:</label>
                 <input
                   type="number"
                   id="expense-amount"
                   value={expenseAmount}
                   onChange={handleAmountChange}
-                  required style={{backgroundColor:"#3b3939",color:"white"}}
+                  required
+                  style={{backgroundColor:"#3b3939",color:"white"}}
                 />
                 <button type="submit"><b>Add Expense</b></button>
               </form>
-              {expenseMessage && (
+              {showAlert && expenseMessage && (
                 <div id="budget-alert" className="alert show">
                   <span>{expenseMessage}</span>
                   <button className="close-btn" onClick={handleCloseAlert}>×</button>
@@ -150,35 +222,22 @@ const BudgetTracker: React.FC = () => {
               )}
             </section>
 
-            {/* <AddCategory onCategoryAdd={handleAddCategory} /> */}
+            <section className="charts">
+              <div className="graph-container">
+                <h2 className="graph-title">Balance Overview</h2>
+                <div className="chart">
+                  <Line data={lineChartData} />
+                </div>
+              </div>
+            </section>
 
-            <section className="budget-comparison">
-              <h2>Budget Comparison</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                    <th>Ideal Amount</th>
-                    <th>Actual Amount</th>
-                    <th>Difference</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {categories.map((category) => {
-                    const idealAmount = idealPlan[category] || 0;
-                    const actualAmount = actualExpenses[category] || 0;
-                    const difference = actualAmount - idealAmount;
-                    return (
-                      <tr key={category}>
-                        <td>{category}</td>
-                        <td>{idealAmount.toFixed(2)}</td>
-                        <td>{actualAmount.toFixed(2)}</td>
-                        <td>{difference.toFixed(2)}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            <section className="charts">
+              <div className="graph-container">
+                <h2 className="graph-title">Spending Distribution</h2>
+                <div className="chart">
+                  <Pie data={pieChartData} />
+                </div>
+              </div>
             </section>
           </>
         )}
