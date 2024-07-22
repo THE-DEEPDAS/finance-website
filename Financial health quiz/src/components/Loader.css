@@ -1,0 +1,20 @@
+/* src/components/Loader.css */
+#loader {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  
+  .loader-image {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+  }
+  

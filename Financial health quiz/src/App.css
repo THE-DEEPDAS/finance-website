@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0,105,130);
+  background: radial-gradient(circle, rgba(0,105,130,1) 0%, rgba(0,0,0,1) 64%);
+}
+
+.start-button, .submit-button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #61dafb;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover, .submit-button:hover {
+  background-color: #21a1f1;
+}
+
+.start-button:focus, .submit-button:focus {
+  outline: none;
+}

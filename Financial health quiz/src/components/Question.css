@@ -1,0 +1,15 @@
+.question-container {
+    text-align: center;
+  }
+  
+  .question-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+  }
+  
+  .question-input {
+    width: 100%;
+    max-width: 300px;
+  }
+  
