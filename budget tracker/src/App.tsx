@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
-import BudgetTracker from './components/BudgetTracker';
+import BudgetTrackerNew from './components/BudgetTrackerNew';
+import Navbar from './components/Navbar'; 
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header>
-        <h1>Budget App</h1>
-      </header>
+      <Navbar /> 
       <main>
-        <BudgetTracker />
+        <BudgetTrackerNew />
       </main>
     </div>
   );

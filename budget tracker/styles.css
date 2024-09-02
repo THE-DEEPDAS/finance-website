@@ -2,18 +2,110 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    background: linear-gradient(43deg, #FDDC5C 0%, rgba(0,0,0,1) 15%, #FFD700 15%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%);
     color: #333;
+    background-attachment: fixed;
+    z-index: 1;
 }
 
-header {
-    background-color: #333;
-    color: white;
+/* Header Styling */
+header h5 {
+    background: linear-gradient(to right, #ffffff, #f5ffff, #53def9, #00eaff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     text-align: center;
-    padding: 1em 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.5em;
+    margin: 0.5em;
 }
 
+header h1 {
+    background: linear-gradient(to right, #ffffff, #f5ffff, #53def9, #00eaff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    padding: 0.3em;
+    margin: 0;
+    font-size: 5.5em;
+    border-radius: 15px;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 15px 20px;
+    color: #fff;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in, .subscribe {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sign-in:hover, .subscribe:hover {
+    background-color: #444;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+.search-container .search-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search-container .search-btn:hover {
+    background-color: #ccc;
+}
+
+/* Main Content Styling */
 main {
     padding: 2em;
     max-width: 800px;
@@ -21,21 +113,18 @@ main {
     animation: fadeIn 1s ease-in-out;
 }
 
-h1, h2 {
-    margin: 0 0 1em;
-    color: #444;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.budget-input, .add-expense, .budget-comparison, .ideal-plan {
+/* Sections Styling */
+.budget-input, .add-expense, .ideal-plan, .charts {
     margin-bottom: 2em;
-    background-color: white;
+    background-color: rgb(20, 20, 20);
+    color: #ffffff;
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: slideIn 0.5s ease-in-out;
 }
 
+/* Forms and Labels Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -53,10 +142,15 @@ input, select {
     border-radius: 5px;
 }
 
+.add-category {
+    color: rgb(250, 252, 246);
+}
+
+/* Button Styling */
 button {
     padding: 0.5em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #442c03 0%, #58440f 100%);
+    color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -64,9 +158,11 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: linear-gradient(135deg, #F9F295 0%, #E0AA3E 33%, #FAF398 66%, #B88A44 100%);
+    color: black;
 }
 
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -80,13 +176,15 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #000000;
+    margin-bottom: 10px;
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #3b3939;
 }
 
+/* Keyframe Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -107,6 +205,7 @@ tbody tr:nth-child(even) {
     }
 }
 
+/* Popup and Alert Styling */
 #message-popup {
     display: none;
     position: fixed;
@@ -138,4 +237,118 @@ tbody tr:nth-child(even) {
 #message-popup .emoji {
     font-size: 5em;
     margin-top: 0.5em;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 40px 10px 20px; /* Adjust padding to accommodate the close button */
+    border-radius: 5px;
+    background-color: #f0ad4e; /* Adjust the background color as needed */
+    color: #fff; /* Text color */
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: none; /* Initially hide it */
+}
+
+.alert.show {
+    display: block; /* Show the alert */
+    animation: slideUp 0.5s ease forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding: 5px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Chart Styling */
+.graph-container, .chart-container {
+    background-color: rgba(20, 20, 20, 0.8); /* Slightly transparent background */
+    color: #ffffff;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better separation */
+    margin-bottom: 2em;
+    animation: slideIn 0.5s ease-in-out;
+    width: 100%; /* Ensure the container takes full width */
+    max-width: 900px; /* Increase the maximum width to make charts larger */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the contents */
+}
+
+/* Make sure the charts take up most of the available space */
+.chartjs-container {
+    width: 100%;
+    max-width: 900px;
+    height: 500px; /* Increase height for better visibility */
+}
+
+/* Chart.js specific styling */
+canvas {
+    background-color: transparent !important; /* Ensure the background is transparent */
+}
+
+/* Chart.js tooltips and legend */
+.chartjs-tooltip {
+    background-color: rgba(0, 0, 0, 0.9) !important; /* Slightly darker for better contrast */
+    color: #fff !important;
+    border-radius: 5px; /* Rounded corners for tooltips */
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    color: #FFD700; /* Gold color for better visibility */
+}
+
+.chart-legend-item {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    color: #FFD700; /* Gold color for better visibility */
+}
+
+.chart-legend-color {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.chart-axis, .chart-grid-line {
+    color: #FFD700 !important; /* Gold color for better visibility */
+}
+.increase-budget {
+    margin-bottom: 2em;
+    background-color: rgb(20, 20, 20);
+    color: #ffffff;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
 }

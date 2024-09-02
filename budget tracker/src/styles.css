@@ -1,41 +1,186 @@
+/* Define color variables */
+:root {
+    --primary-color: #3498db; /* Bright blue */
+    --secondary-color: #696969;
+    
+    --background-color: #222;
+    --text-color: #ecf0f1;
+    --header-color: #333;
+    --gradient-start: #1e2a38; /* Dark blue/black */
+    --gradient-end: #3498db; /* Bright blue */
+}
+
+/* General Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    color: #333;
+    color: var(--text-color);
+    background: rgb(86,86,88,0.5);
+    background: linear-gradient(115deg, rgba(86,86,88,1) 3%, rgba(38,39,42,1) 29%, rgba(0,1,5,1) 48%, rgba(33,34,37,1) 72%, rgba(79,79,81,1) 96%);
+    background-attachment: fixed;
+    
+    position: relative;
+    z-index: 0;
 }
 
-header {
-    background-color: #333;
-    color: white;
+/* Background Image Overlay */
+body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://media.istockphoto.com/id/1661960136/photo/backlit-black-piggy-bank-on-dark-background-illustration-of-the-concept-of-financial.jpg?s=612x612&w=0&k=20&c=BsXndZdwicirdY50vjBigXLAXy0t4St0xMV0E-3JF9o=");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.7;
+    z-index:-1; /* Ensure it stays behind the content */
+}
+
+/* Header Styling */
+/* header h5 {
+    background: linear-gradient(to right,WHITE,whitesmoke,#758694);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
     text-align: center;
-    padding: 1em 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1.5em;
+    margin: 0.5em;
 }
 
+header h1 {
+ 
+    background: linear-gradient(to right,WHITE,whitesmoke,#758694);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    padding: 0.3em;
+    margin: 0;
+    font-size: 5.5em;
+    border-radius: 15px;
+} */
+
+header h5 {
+    background: linear-gradient(to right, WHITE, whitesmoke, #758694);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+
+header h1 {
+    background: linear-gradient(to right, WHITE, whitesmoke, #758694);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-align: center;
+    padding: 0.3em;
+    margin: 0;
+    font-size: 5.5em;
+    border-radius: 15px;
+}
+
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 15px 20px;
+    color: #fff;
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in, .subscribe {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sign-in:hover, .subscribe:hover {
+    background-color: #444;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+}
+
+.search-container .search-btn {
+    background-color: #ddd;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search-container .search-btn:hover {
+    background-color: #ccc;
+}
+
+/* Main Content Styling */
 main {
     padding: 2em;
     max-width: 800px;
     margin: 0 auto;
     animation: fadeIn 1s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly translucent background */
+    border-radius: 10px;
 }
 
-h1, h2 {
-    margin: 0 0 1em;
-    color: #444;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.budget-input, .add-expense, .budget-comparison, .ideal-plan {
+/* Sections Styling */
+.budget-input, .add-expense, .ideal-plan, .charts, .increase-budget {
     margin-bottom: 2em;
-    background-color: white;
+    background-color: rgba(34, 34, 34, 0.8); /* Slightly translucent background */
+    color: var(--text-color);
     padding: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: slideIn 0.5s ease-in-out;
 }
 
+/* Forms and Labels Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -53,10 +198,17 @@ input, select {
     border-radius: 5px;
 }
 
-button {
+.add-category {
+    color: var(--text-color);
+}
+#total-budget{
+    background-color:#3b3939;
+}
+/* Button Styling */
+/* button {
     padding: 0.5em;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(232deg, rgba(30, 83, 85, 1) 47%, rgba(5, 146, 148, 1) 71%);
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -64,9 +216,83 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: linear-gradient(232deg, rgba(64, 205, 215, 1) 15%, rgba(126, 236, 246, 1) 23%, rgba(159, 244, 251, 1) 32%, rgba(136, 237, 246, 1) 39%, rgba(80, 213, 223, 1) 47%, rgba(122, 231, 240, 1) 57%, rgba(148, 253, 255, 1) 67%, rgba(133, 238, 247, 1) 81%, rgba(64, 205, 215, 1) 92%);
+    box-shadow: 0 0 100px rgb(0, 234, 255);
+} */
+
+/* Button Styling */
+button {
+    padding: 15px 30px; /* Padding for button */
+    border: 2px solid #2c2c2c; /* Border color */
+    background-color: #1a1a1a; /* Background color */
+    color: #ffffff; /* Text color */
+    font-size: 1.2rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 10px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    transition: all 0.4s ease; /* Smooth transition for all properties */
+    outline: none; /* Remove default outline */
+    position: relative; /* Position for pseudo-element */
+    overflow: hidden; /* Hide overflow for pseudo-element */
 }
 
+/* Hover effect */
+button:hover {
+    border-color: #666666; /* Change border color */
+    background-color: #2a2929; /* Change background color */
+}
+
+/* After pseudo-element for stylish effect */
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    ); /* Radial gradient effect */
+    transform: scale(0); /* Initial scale for effect */
+    transition: transform 0.5s ease; /* Smooth transition for scale effect */
+}
+
+button:hover::after {
+    transform: scale(4); /* Scale up on hover */
+}
+
+
+/* Hover effect */
+button:hover {
+  
+    border-color: #666666; /* From boton-elegante */
+}
+
+/* After pseudo-element for stylish effect */
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    ); /* From boton-elegante */
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+button:hover::after {
+    transform: scale(4); /* From boton-elegante */
+}
+
+
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -80,13 +306,15 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
 }
 
 tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #3b3939;
 }
 
+/* Keyframe Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -107,6 +335,7 @@ tbody tr:nth-child(even) {
     }
 }
 
+/* Popup and Alert Styling */
 #message-popup {
     display: none;
     position: fixed;
@@ -115,7 +344,7 @@ tbody tr:nth-child(even) {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    color: white;
+    color: var(--text-color);
     font-size: 2em;
     text-align: center;
     align-items: center;
@@ -138,4 +367,151 @@ tbody tr:nth-child(even) {
 #message-popup .emoji {
     font-size: 5em;
     margin-top: 0.5em;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 40px 10px 20px; /* Adjust padding to accommodate the close button */
+    border-radius: 5px;
+    background-color: #f0ad4e; /* Adjust the background color as needed */
+    color: var(--text-color); /* Text color */
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: none; /* Initially hide it */
+}
+
+.alert.show {
+    display: block; /* Show the alert */
+    animation: slideUp 0.5s ease forwards;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding: 5px;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.add-category button{
+    height: 30px;
+    /* margin-bottom: 0; */
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 30px;
+}
+/* Chart Styling */
+.graph-container, .chart-container {
+    background-color: rgba(20, 20, 20, 0.8); /* Slightly transparent background */
+    color: var(--text-color);
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 3.5em;
+    }
+
+    .navbar {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .search-container {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .search-container input {
+        width: 150px;
+    }
+
+    .search-container .search-btn {
+        padding: 5px;
+    }
+
+    main {
+        padding: 1em;
+    }
+
+    .budget-input, .add-expense, .ideal-plan, .charts, .increase-budget {
+        padding: 0.5em;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .alert {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .navbar {
+        padding: 5px;
+    }
+
+    .search-container input {
+        width: 100px;
+    }
+
+    .search-container .search-btn {
+        padding: 3px;
+    }
+
+    .budget-input, .add-expense, .ideal-plan, .charts, .increase-budget {
+        padding: 0.5em;
+    }
+
+    .alert {
+        font-size: 12px;
+        padding: 8px;
+    }
 }
